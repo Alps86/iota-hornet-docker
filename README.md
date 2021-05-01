@@ -1,5 +1,7 @@
 ## install docker
 ```console
+curl -LO https://github.com/Alps86/iota-hornet-docker/setup.sh
+chmod +x setup.sh
 ./setup.sh
 ```
 
@@ -28,15 +30,10 @@ docker-compose run pwdhash
 
 ## start node
 ```console
-docker-compose up -de
+service hornet start
 ```
 
 ## stop node
 ```console
-docker-compose stop
-```
-
-## delete node
-```console
-docker-compose down -v
+service hornet stop
 ```
