@@ -5,6 +5,7 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
+EnvironmentFile=-/etc/default/hornet
 Type=oneshot
 RemainAfterExit=yes
 StandardError=null

@@ -11,8 +11,7 @@ services:
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.websecure.http.tls.certresolver=https"
-      - "--entrypoints.websecure.http.tls.domains.main=example.com"
-      - "--certificatesresolvers.https.acme.email=test@test.de"
+      - "--certificatesresolvers.https.acme.email=${EMAIL}"
       - "--certificatesresolvers.https.acme.httpchallenge=true"
       - "--certificatesresolvers.https.acme.httpchallenge.entrypoint=web"
       - "--certificatesresolvers.https.acme.storage=/letsencrypt/acme.json"
@@ -39,7 +38,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.dashboard.loadbalancer.server.port=80"
-      - "traefik.http.routers.dashboard.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.dashboard.rule=Host(`${DOMAIN}`)"
       - "traefik.http.routers.dashboard.service=dashboard"
       - "traefik.http.routers.dashboard.entrypoints=websecure"
       - "traefik.http.services.api.loadbalancer.server.port=14265"
@@ -55,9 +54,9 @@ services:
     environment:
       RESTAPI_BINDADDRESS: "0.0.0.0:14265"
       DASHBOARD_BINDADDRESS: "0.0.0.0:80"
-      DASHBOARD_AUTH_USERNAME: "admin"
-      DASHBOARD_AUTH_PASSWORDHASH: "0000000000000000000000000000000000000000000000000000000000000000"
-      DASHBOARD_AUTH_PASSWORDSALT: "0000000000000000000000000000000000000000000000000000000000000000"
+      DASHBOARD_AUTH_USERNAME: "${DASHBOARD_AUTH_USERNAME}"
+      DASHBOARD_AUTH_PASSWORDHASH: "${DASHBOARD_AUTH_PASSWORDHASH}"
+      DASHBOARD_AUTH_PASSWORDSALT: "${DASHBOARD_AUTH_PASSWORDSALT}"
       PRUNING_DELAY: 60480
     cap_drop:
       - ALL
