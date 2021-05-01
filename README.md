@@ -1,4 +1,4 @@
-## setup server for docker
+## install docker
 ```console
 ./setup.sh
 ```
