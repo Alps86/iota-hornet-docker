@@ -42,10 +42,12 @@ services:
       - "traefik.http.routers.dashboard.rule=Host(`${DOMAIN}`) && PathPrefix(`/`)"
       - "traefik.http.routers.dashboard.service=dashboard"
       - "traefik.http.routers.dashboard.entrypoints=websecure"
+      - "traefik.http.routers.dashboard.tls.certresolver=https"
       - "traefik.http.services.api.loadbalancer.server.port=14265"
       - "traefik.http.routers.api.rule=Host(`${DOMAIN}`) && PathPrefix(`/api/v1/tips`)"
       - "traefik.http.routers.api.service=api"
       - "traefik.http.routers.api.entrypoints=websecure"
+      - "traefik.http.routers.api.tls.certresolver=https"
     ports:
       - "0.0.0.0:14626:14626/udp"
       - "0.0.0.0:15600:15600/tcp"
