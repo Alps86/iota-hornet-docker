@@ -25,4 +25,5 @@ docker-compose -v
 # setup service
 curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/hornet.service
 cp hornet.service /etc/systemd/system/hornet.service && rm hornet.service
+systemctl enable hornet.service
 systemctl daemon-reload
