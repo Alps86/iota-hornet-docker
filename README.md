@@ -19,7 +19,7 @@ curl -LO https://raw.githubusercontent.com/gohornet/hornet/main/config.json
 curl -LO https://raw.githubusercontent.com/gohornet/hornet/main/peering.json
 ```
 
-## config
+## setup node
 ```console
 curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/docker-compose.yml
 curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/config.env
