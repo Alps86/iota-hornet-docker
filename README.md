@@ -1,3 +1,6 @@
+## Info
+This setup only works with a correct domain.
+
 ## install docker
 ```console
 curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/setup.sh
