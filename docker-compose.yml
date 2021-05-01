@@ -39,16 +39,13 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.dashboard.loadbalancer.server.port=80"
-      - "traefik.http.routers.dashboard.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.dashboard.rule=Host(`${DOMAIN}`) && PathPrefix(`/`)"
       - "traefik.http.routers.dashboard.service=dashboard"
       - "traefik.http.routers.dashboard.entrypoints=websecure"
       - "traefik.http.services.api.loadbalancer.server.port=14265"
       - "traefik.http.routers.api.rule=Host(`${DOMAIN}`) && PathPrefix(`/api/v1`)"
       - "traefik.http.routers.api.service=api"
       - "traefik.http.routers.api.entrypoints=websecure"
-      - "traefik.http.routers.health.rule=Host(`${DOMAIN}`) && PathPrefix(`/health`)"
-      - "traefik.http.routers.health.service=api"
-      - "traefik.http.routers.health.entrypoints=websecure"
     ports:
       - "0.0.0.0:14626:14626/udp"
       - "0.0.0.0:15600:15600/tcp"
