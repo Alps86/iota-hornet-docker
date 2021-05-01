@@ -25,3 +25,18 @@ docker-compose run pwdhash
 * set **DASHBOARD_AUTH_USERNAME**
 * set **DASHBOARD_AUTH_PASSWORDHASH**
 * set **DASHBOARD_AUTH_PASSWORDSALT**
+
+## start node
+```console
+docker-compose up -de
+```
+
+## stop node
+```console
+docker-compose stop
+```
+
+## delete node
+```console
+docker-compose down -v
+```
