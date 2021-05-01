@@ -1,5 +1,3 @@
-# WIP
-
 ## install docker
 ```console
 curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/setup.sh
@@ -53,4 +51,9 @@ service hornet start
 ## stop node
 ```console
 service hornet stop
+```
+
+## visit the dashboard
+```console
+https://example.com
 ```
