@@ -1,5 +1,3 @@
-# WIP
-
 ## install docker
 ```console
 curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/setup.sh
