@@ -1,6 +1,6 @@
 ## install docker
 ```console
-curl -LO https://github.com/Alps86/iota-hornet-docker/setup.sh
+curl -LO https://github.com/Alps86/iota-hornet-docker/main/setup.sh
 chmod +x setup.sh
 ./setup.sh
 ```
