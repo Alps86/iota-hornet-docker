@@ -5,7 +5,7 @@ services:
     image: "traefik:v2.4"
     container_name: "traefik"
     command:
-      - "--api.insecure=false"
+      - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
@@ -43,9 +43,12 @@ services:
       - "traefik.http.routers.dashboard.service=dashboard"
       - "traefik.http.routers.dashboard.entrypoints=websecure"
       - "traefik.http.services.api.loadbalancer.server.port=14265"
-      - "traefik.http.routers.api.rule=PathPrefix(`/api/v1`) || PathPrefix(`/health`)"
+      - "traefik.http.routers.api.rule=Host(`${DOMAIN}`) && PathPrefix(`/api/v1`)"
       - "traefik.http.routers.api.service=api"
       - "traefik.http.routers.api.entrypoints=websecure"
+      - "traefik.http.routers.health.rule=Host(`${DOMAIN}`) && PathPrefix(`/health`)"
+      - "traefik.http.routers.health.service=api"
+      - "traefik.http.routers.health.entrypoints=websecure"
     ports:
       - "0.0.0.0:14626:14626/udp"
       - "0.0.0.0:15600:15600/tcp"
