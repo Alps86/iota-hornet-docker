@@ -8,13 +8,9 @@ chmod +x setup.sh
 ./setup.sh
 ```
 
-## installation directory
-```console
-cd /opt/hornet
-```
-
 ### change the config
 ```console
+cd /opt/hornet
 docker-compose run pwdhash
 ./config.sh
 ```
