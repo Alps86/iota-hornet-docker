@@ -13,12 +13,6 @@ chmod +x setup.sh
 cd /opt/hornet
 ```
 
-## get config
-```console
-curl -LO https://raw.githubusercontent.com/gohornet/hornet/main/config.json
-curl -LO https://raw.githubusercontent.com/gohornet/hornet/main/peering.json
-```
-
 ### change the config
 ```console
 docker-compose run pwdhash
