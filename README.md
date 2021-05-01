@@ -27,6 +27,7 @@ curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/conf
 
 ### change the config
 ```console
+docker-compose run pwdhash
 ./config.sh
 ```
 
