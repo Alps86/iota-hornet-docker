@@ -17,6 +17,10 @@ curl -LO https://raw.githubusercontent.com/gohornet/hornet/main/peering.json
 ```
 
 ## config
+```console
+curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/docker-compose.yml
+```
+
 all configurations are located in the file "docker-compose.yaml" 
 
 ### https setup with letsencrypt
