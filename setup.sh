@@ -1,7 +1,5 @@
 #bin/bash
 
-mkdir /opt/hornet
-
 apt update
 apt-get install -y \
      apt-transport-https \
@@ -22,9 +20,13 @@ chmod +x /usr/local/bin/docker-compose
 
 docker-compose -v
 
+mkdir -p /opt/hornet
+cd /opt/hornet
+
 # setup service
 curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/hornet.service
-curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/config.env -o /etc/default/hornet
-cp hornet.service /etc/systemd/system/hornet.service && rm hornet.service
-systemctl enable hornet.service
-systemctl daemon-reload
+curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/config.sh
+curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/docker-compose.yml
+
+chmod +x config.sh
+

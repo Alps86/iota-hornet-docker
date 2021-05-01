@@ -25,25 +25,9 @@ curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/dock
 curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/config.env
 ```
 
-### https setup with letsencrypt
-change in the **config.env**
-* set your domain
-* set your email
-
-### admin access
-create the password hash
+### change the config
 ```console
-docker-compose run pwdhash
-```
-
-change in the **config.env**
-* set **DASHBOARD_AUTH_USERNAME**
-* set **DASHBOARD_AUTH_PASSWORDHASH**
-* set **DASHBOARD_AUTH_PASSWORDSALT**
-
-## update config
-```console
-cp config.env /etc/default/hornet
+./config.sh
 ```
 
 ## start node
