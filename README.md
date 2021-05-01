@@ -5,6 +5,11 @@ chmod +x setup.sh
 ./setup.sh
 ```
 
+## installation directory
+```console
+cd /opt/hornet
+```
+
 ## get config
 ```console
 curl -LO https://raw.githubusercontent.com/gohornet/hornet/main/config.json
