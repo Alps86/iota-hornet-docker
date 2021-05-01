@@ -1,22 +1,22 @@
-##setup server for docker
+## setup server for docker
 ```console
 ./setup.sh
 ```
 
-##get config
+## get config
 ```console
 curl -LO https://raw.githubusercontent.com/gohornet/hornet/main/config.json
 curl -LO https://raw.githubusercontent.com/gohornet/hornet/main/peering.json
 ```
 
-##config
+## config
 all configurations are located in the file "docker-compose.yaml" 
 
-###https setup with letsencrypt
+### https setup with letsencrypt
 * set your domain in **entrypoints.websecure.http.tls.domains.main**
 * set your email in **certificatesresolvers.https.acme.email**
 
-###admin access
+### admin access
 create the password hash
 ```console
 docker-compose run pwdhash
