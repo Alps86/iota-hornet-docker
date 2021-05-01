@@ -11,6 +11,7 @@ services:
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.websecure.http.tls.certresolver=https"
+      - "--entrypoints.websecure.http.tls.domains.main={DOMAIN}"
       - "--certificatesresolvers.https.acme.email=${EMAIL}"
       - "--certificatesresolvers.https.acme.httpchallenge=true"
       - "--certificatesresolvers.https.acme.httpchallenge.entrypoint=web"
