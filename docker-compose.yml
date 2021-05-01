@@ -43,7 +43,7 @@ services:
       - "traefik.http.routers.dashboard.service=dashboard"
       - "traefik.http.routers.dashboard.entrypoints=websecure"
       - "traefik.http.services.api.loadbalancer.server.port=14265"
-      - "traefik.http.routers.api.rule=Host(`${DOMAIN}`) && PathPrefix(`/api/v1`)"
+      - "traefik.http.routers.api.rule=Host(`${DOMAIN}`) && PathPrefix(`/api/v1/tips`)"
       - "traefik.http.routers.api.service=api"
       - "traefik.http.routers.api.entrypoints=websecure"
     ports:
