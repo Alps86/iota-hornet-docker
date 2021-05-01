@@ -1,0 +1,68 @@
+version: "3.3"
+
+services:
+  traefik:
+    image: "traefik:v2.4"
+    container_name: "traefik"
+    command:
+      - "--api.insecure=false"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.websecure.http.tls.certresolver=https"
+      - "--entrypoints.websecure.http.tls.domains.main=example.com"
+      - "--certificatesresolvers.https.acme.email=test@test.de"
+      - "--certificatesresolvers.https.acme.httpchallenge=true"
+      - "--certificatesresolvers.https.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.https.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - "./letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  pwdhash:
+    image: gohornet/hornet:1.0.1
+    working_dir: "/app"
+    command: "hornet tools pwdhash"
+    volumes:
+      - ./config.json:/app/config.json:ro
+      - ./peering.json:/app/peering.json
+
+  hornet:
+    image: gohornet/hornet:1.0.1
+    restart: always
+    working_dir: "/app"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.dashboard.loadbalancer.server.port=80"
+      - "traefik.http.routers.dashboard.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.dashboard.service=dashboard"
+      - "traefik.http.routers.dashboard.entrypoints=websecure"
+      - "traefik.http.services.api.loadbalancer.server.port=14265"
+      - "traefik.http.routers.api.rule=PathPrefix(`/api/v1`) || PathPrefix(`/health`)"
+      - "traefik.http.routers.api.service=api"
+      - "traefik.http.routers.api.entrypoints=websecure"
+    ports:
+      - "0.0.0.0:14626:14626/udp"
+      - "0.0.0.0:15600:15600/tcp"
+    expose:
+      - "80"
+      - "14265"
+    environment:
+      RESTAPI_BINDADDRESS: "0.0.0.0:14265"
+      DASHBOARD_BINDADDRESS: "0.0.0.0:80"
+      DASHBOARD_AUTH_USERNAME: "admin"
+      DASHBOARD_AUTH_PASSWORDHASH: "0000000000000000000000000000000000000000000000000000000000000000"
+      DASHBOARD_AUTH_PASSWORDSALT: "0000000000000000000000000000000000000000000000000000000000000000"
+      PRUNING_DELAY: 60480
+    cap_drop:
+      - ALL
+    volumes:
+      - ./config.json:/app/config.json:ro
+      - ./peering.json:/app/peering.json
+      - ./snapshots/mainnet:/app/snapshots/mainnet
+      - ./mainnetdb:/app/mainnetdb
