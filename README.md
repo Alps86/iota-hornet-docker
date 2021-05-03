@@ -14,15 +14,15 @@ chmod +x setup.sh
 cd /opt/hornet
 ```
 2. use **docker-compose run pwdhash** for the hash and salt generation (ignore the Warnings)
-   ```console
-    docker-compose run pwdhash
-    ```
-   ![docker-compose run pwdhash](first.png)
+```console
+ docker-compose run pwdhash
+ ```
+![docker-compose run pwdhash](first.png)
 3. copy & paste the hash and salt in the next step in **congig.sh**
-   ```console
-    ./config.sh
-    ```
-   ![./config.sh](second.png)
+```console
+ ./config.sh
+ ```
+![./config.sh](second.png)
 
 ## start node
 ```console
