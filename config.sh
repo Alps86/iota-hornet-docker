@@ -12,6 +12,6 @@ DASHBOARD_AUTH_USERNAME=$username
 DASHBOARD_AUTH_PASSWORDHASH=$hash
 DASHBOARD_AUTH_PASSWORDSALT=$salt" > /etc/default/hornet
 
-cp hornet.service /etc/systemd/system/hornet.service && rm hornet.service
+cp hornet.service /etc/systemd/system/hornet.service
 systemctl enable hornet.service
 systemctl daemon-reload
