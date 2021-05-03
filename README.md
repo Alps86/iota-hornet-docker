@@ -9,7 +9,7 @@ chmod +x setup.sh
 ```
 
 ### change the config
-1. go to insalltion directory
+1. go to installation directory
 ```console
 cd /opt/hornet
 ```
