@@ -9,13 +9,20 @@ chmod +x setup.sh
 ```
 
 ### change the config
-Use **docker-compose run pwdhash** for the hash and salt generation, then copy & paste the hash and salt in the next step.
-
+1. go to insalltion directory
 ```console
 cd /opt/hornet
-docker-compose run pwdhash
-./config.sh
 ```
+2. use **docker-compose run pwdhash** for the hash and salt generation (ignore the Warnings)
+   ```console
+    docker-compose run pwdhash
+    ```
+   ![docker-compose run pwdhash](first.png)
+3. copy & paste the hash and salt in the next step in **congig.sh**
+   ```console
+    ./config.sh
+    ```
+   ![./config.sh](second.png)
 
 ## start node
 ```console
