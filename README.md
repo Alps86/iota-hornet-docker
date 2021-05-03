@@ -9,6 +9,8 @@ chmod +x setup.sh
 ```
 
 ### change the config
+Use **docker-compose run pwdhash** for the hash and salt generation, then copy & paste the hash and salt in the next step.
+
 ```console
 cd /opt/hornet
 docker-compose run pwdhash
