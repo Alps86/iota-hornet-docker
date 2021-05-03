@@ -28,6 +28,7 @@ curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/horn
 curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/config.sh
 curl -LO https://raw.githubusercontent.com/Alps86/iota-hornet-docker/master/docker-compose.yml
 
+rm -f /opt/hornet/config.json && rm -f /opt/hornet/peering.json
 curl -LO https://raw.githubusercontent.com/gohornet/hornet/main/config.json
 curl -LO https://raw.githubusercontent.com/gohornet/hornet/main/peering.json
 
